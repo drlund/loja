@@ -11,9 +11,11 @@ import { MysqlConfigService } from './config/mysql.config.service';
     UsuarioModule,
     ProdutoModule,
     ConfigModule.forRoot({
+      envFilePath: '.env',
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
       useClass: MysqlConfigService,
       inject: [MysqlConfigService],
     }),
