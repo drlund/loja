@@ -12,7 +12,6 @@ import { CriaUsuarioDTO } from './dto/CriaUsuario.dto';
 import { UsuarioEntity } from './usuario.entity';
 import { ListaUsuarioDTO } from './dto/ListaUsuario.dto';
 import { AtualizaUsuarioDTO } from './dto/AtualizaUsuario.dto';
-import { randomInt } from 'crypto';
 
 @Controller('/usuarios')
 export class UsuarioController {

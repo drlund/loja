@@ -8,7 +8,7 @@ import {
 import { EmailEhUnico } from '../validacao/email-eh-unico.validator';
 
 export class CriaUsuarioDTO {
-  @IsNumber()
+  @IsNumber(undefined, { message: 'ID do usuário inválido' })
   idUsuario: number;
   @IsNotEmpty({ message: 'O campo não pode ser vazio' })
   @IsString({ message: 'O nome não pode ser vazio' })
