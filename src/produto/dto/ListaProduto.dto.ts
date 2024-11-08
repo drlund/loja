@@ -9,8 +9,8 @@ class ListaImagemProdutoDTO {
 }
 
 export class ListaProdutoDTO {
-  id: string;
-  usuarioId: string;
+  id: number;
+  usuarioId: number;
   nome: string;
   valor: number;
   quantidade: number;

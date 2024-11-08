@@ -1,7 +1,15 @@
-import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MinLength,
+} from 'class-validator';
 import { EmailEhUnico } from '../validacao/email-eh-unico.validator';
 
 export class CriaUsuarioDTO {
+  @IsNumber()
+  idUsuario: number;
   @IsNotEmpty({ message: 'O campo não pode ser vazio' })
   @IsString({ message: 'O nome não pode ser vazio' })
   nome: string;

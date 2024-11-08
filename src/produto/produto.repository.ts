@@ -14,7 +14,7 @@ export class ProdutoRepository {
     return dadosProduto;
   }
 
-  private buscaPorId(id: string) {
+  private buscaPorId(id: number) {
     const possivelProduto = this.produtos.find((produto) => produto.id === id);
 
     if (!possivelProduto) {
@@ -24,7 +24,7 @@ export class ProdutoRepository {
     return possivelProduto;
   }
 
-  async atualiza(id: string, dadosProduto: Partial<ProdutoEntity>) {
+  async atualiza(id: number, dadosProduto: Partial<ProdutoEntity>) {
     const dadosNaoAtualizaveis = ['id', 'usuarioId'];
     const produto = this.buscaPorId(id);
     Object.entries(dadosProduto).forEach(([chave, valor]) => {
@@ -37,7 +37,7 @@ export class ProdutoRepository {
     return produto;
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     const produtoRemovido = this.buscaPorId(id);
     this.produtos = this.produtos.filter((produto) => produto.id !== id);
     return produtoRemovido;

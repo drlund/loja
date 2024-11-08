@@ -10,9 +10,9 @@ import {
 import { UsuarioRepository } from './usuario.repository';
 import { CriaUsuarioDTO } from './dto/CriaUsuario.dto';
 import { UsuarioEntity } from './usuario.entity';
-import { v4 as uuid } from 'uuid';
 import { ListaUsuarioDTO } from './dto/ListaUsuario.dto';
 import { AtualizaUsuarioDTO } from './dto/AtualizaUsuario.dto';
+import { randomInt } from 'crypto';
 
 @Controller('/usuarios')
 export class UsuarioController {
@@ -24,7 +24,7 @@ export class UsuarioController {
     usuarioEntity.email = dadosDoUsuario.email;
     usuarioEntity.senha = dadosDoUsuario.senha;
     usuarioEntity.nome = dadosDoUsuario.nome;
-    usuarioEntity.id = uuid();
+    usuarioEntity.id = dadosDoUsuario.idUsuario;
 
     this.usuarioRepository.salvar(usuarioEntity);
 
@@ -45,7 +45,7 @@ export class UsuarioController {
 
   @Put('/:id')
   async atualizaUsuario(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() novosDados: AtualizaUsuarioDTO,
   ) {
     const usuarioAtualizado = await this.usuarioRepository.atualiza(
@@ -60,7 +60,7 @@ export class UsuarioController {
   }
 
   @Delete('/:id')
-  async removeUsuario(@Param('id') id: string) {
+  async removeUsuario(@Param('id') id: number) {
     const usuarioRemovido = await this.usuarioRepository.remove(id);
     return {
       usuario: usuarioRemovido,

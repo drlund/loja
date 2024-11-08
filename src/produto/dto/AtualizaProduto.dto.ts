@@ -6,18 +6,17 @@ import {
   IsNumber,
   IsOptional,
   IsString,
-  IsUUID,
   Min,
   ValidateNested,
 } from 'class-validator';
 import { CaracteristicaProdutoDTO, ImagemProdutoDTO } from './CriarProduto.dto';
 
 export class AtualizaProdutoDTO {
-  @IsUUID(undefined, { message: 'ID do produto inválido' })
-  id: string;
+  @IsNumber(undefined, { message: 'ID do produto inválido' })
+  id: number;
 
-  @IsUUID(undefined, { message: 'ID de usuário inválido' })
-  usuarioId: string;
+  @IsNumber(undefined, { message: 'ID de usuário inválido' })
+  usuarioId: number;
 
   @IsString()
   @IsNotEmpty({ message: 'Nome do produto não pode ser vazio' })
