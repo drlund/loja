@@ -6,9 +6,11 @@ import {
   MinLength,
 } from 'class-validator';
 import { EmailEhUnico } from '../validacao/email-eh-unico.validator';
+import { Transform } from 'class-transformer';
 
 export class CriaUsuarioDTO {
   @IsNumber(undefined, { message: 'ID do usuário inválido' })
+  @Transform(() => Math.floor(10000000000 + Math.random() * 9000000000))
   idUsuario: number;
   @IsNotEmpty({ message: 'O campo não pode ser vazio' })
   @IsString({ message: 'O nome não pode ser vazio' })
